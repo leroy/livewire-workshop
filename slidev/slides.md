@@ -1,6 +1,4 @@
 ---
-background: https://source.unsplash.com/collection/94734566/1920x1080
-class: text-center
 highlighter: prism
 lineNumbers: false
 info: |
@@ -13,16 +11,13 @@ drawings:
 transition: slide-left
 title: Welcome to Slidev
 mdc: true
+dark: true
 ---
 
-# Laravel Livewire
+# <div class="flex items-center gap-6">Laravel <img class="h-16" src="/images/livewire.svg"></div>
 
 Reactive UI bouwen op de server
 
-
-<!--
-The last comment block of each slide will be treated as slide notes. It will be visible and editable in Presenter Mode along with the slide. [Read more in the docs](https://sli.dev/guide/syntax.html#notes)
--->
 
 ---
 
@@ -30,6 +25,9 @@ The last comment block of each slide will be treated as slide notes. It will be 
 - Freelance Fullstack Developer
 - PHP & Laravel / VueJS
 - [leroy.nl](https://leroy.nl)
+
+<img class="absolute right-[96px] w-1/4 aspect-square object-cover object-top rounded-full" src="/images/leroy.png">
+
 
 ---
 
@@ -40,17 +38,24 @@ The last comment block of each slide will be treated as slide notes. It will be 
 - Aan de slag!
 
 <!--
-- Wat is het eind doel van vandaag?
-- Na de introductie krijgen jullie een Github repository met een Laravel project
-- Vragen mogen altijd gesteld worden
-
+- Doel vandaag
+    - Werkende applicatie bouwen in Livewire
+- Hoe gaan we dat doen?
+    - Korte introductie livewire
+    - Aan de slag
+- Wat ga ik vertellen?
+    - Wat is Livewire/ Laravel?
+    - Hoe verhoudt Livewire zich tot Laravel?
+    - Wat is een component?
+    - Hoe bouw je je eerste livewire component?
+    - Component voorbeelden
 -->
+
 ---
 
 # Wat is Livewire?
 
 <div class="flex justify-around items-center pt-32">
-<v-clicks>
 <div>
 <img src="/images/livewire.svg" class="w-40" />
 </div>
@@ -66,7 +71,6 @@ The last comment block of each slide will be treated as slide notes. It will be 
 <div>
 <img src="/images/php.svg" class="w-40" />
 </div>
-</v-clicks>
 </div>
 
 <!--
@@ -80,6 +84,8 @@ The last comment block of each slide will be treated as slide notes. It will be 
 <img src="/images/laravel.svg" class="absolute left-1/2 top-1/2 transform -translate-1/2 w-96" />
 
 <!--
+- Hebben jullie wel eens gewerkt met MVC?
+- Wat hebben jullie gemaakt?
 - Wie heeft er wel eens gewerkt met PHP?
 - Wie heeft er wel eens gewerkt met Laravel?
 - Hebben jullie ervaring met MVC?
@@ -103,7 +109,7 @@ Controller
 class PostsController {
     public function index() {
         $posts = Post::all();
-        return view('posts.index', compact('posts'));
+        return view('posts.index', ['posts' => $posts]);
     }
 }
 
@@ -176,11 +182,29 @@ layout: quote
 > a part or element of a larger whole, especially a part of a machine or vehicle. - Oxford Languages
 
 <!--
+- Hebben jullie wel eens gewerkt met een componenten framework?
 - Een component is een onderdeel van een groter geheel
 - In de context van Livewire is een component een onderdeel van een webpagina
 - Denk aan een winkelwagen, product, notificaties, button
 - Hoe ziet een component eruit?
 -->
+
+---
+
+<div class="relative">
+<div v-click.hide>
+<img class="absolute" src="/images/coolblue.png">
+</div>
+<div v-after>
+<img src="/images/coolblue_marked.png">
+</div>
+</div>
+
+<!--
+Experiment: Kunnen jullie de componenten benoemen in deze pagina?
+-->
+
+
 
 ---
 
@@ -211,10 +235,17 @@ View: resources/views/livewire/counter.blade.php
 </div>
 ```
 </v-clicks>
+
+<!--
+- Livewire component bestaat uit 2 onderdelen, class en view
+- State wordt opgeslagen in public properties
+-->
+
 ---
 layout: iframe-right
 url: http://livewire-workshop.test/counter
 ---
+
 app/Livewire/Counter.php
 ```php
 class Counter extends Component
@@ -244,6 +275,7 @@ resources/views/livewire/counter.blade.php
 <!--
 - Livewire component bestaat uit 2 onderdelen, class en view
 -->
+
 ---
 layout: iframe-right
 url: http://livewire-workshop.test/login
